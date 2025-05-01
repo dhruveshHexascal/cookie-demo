@@ -8,6 +8,7 @@ function page() {
     <div>
       <p>{cookies_uat}</p>
       <p>{cookies_auth_status}</p>
+      <p>{process.env.DEPLOY_ENVIRONMENT}</p>
     </div>
   );
 }

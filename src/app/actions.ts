@@ -43,7 +43,7 @@ export async function clearAuthCookies() {
     "m_auth_status",
     "m_refresh_status",
   ];
-
+  const isDevelopment = process.env.DEPLOY_ENVIRONMENT === "development";
   await Promise.all(
     cookiesToClear.map((cookieName) =>
       store.delete({
@@ -53,7 +53,7 @@ export async function clearAuthCookies() {
           process.env.NODE_ENV === "development"
             ? "localhost"
             : "cookie-demo-07.vercel.app",
-        secure: process.env.NODE_ENV === "production",
+        secure: !isDevelopment,
       })
     )
   );
