@@ -48,3 +48,12 @@ export async function clearAuthCookies() {
     store.delete(cookieName);
   });
 }
+export const commonOptions = {
+  domain:
+    process.env.NODE_ENV === "development"
+      ? "localhost"
+      : "cookie-demo-07.vercel.app",
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  path: "/",
+};
