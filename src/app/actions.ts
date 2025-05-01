@@ -43,7 +43,7 @@ export async function clearAuthCookies() {
     "m_auth_status",
     "m_refresh_status",
   ];
-  const isDevelopment = process.env.DEPLOY_ENVIRONMENT === "development";
+  // const isDevelopment = process.env.DEPLOY_ENVIRONMENT === "development";
   // await Promise.all(
   //   cookiesToClear.map((cookieName) =>
   //     store.delete({
