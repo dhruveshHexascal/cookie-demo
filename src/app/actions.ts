@@ -44,17 +44,20 @@ export async function clearAuthCookies() {
     "m_refresh_status",
   ];
   const isDevelopment = process.env.DEPLOY_ENVIRONMENT === "development";
-  await Promise.all(
-    cookiesToClear.map((cookieName) =>
-      store.delete({
-        name: cookieName,
-        path: "/",
-        domain:
-          process.env.NODE_ENV === "development"
-            ? "localhost"
-            : "cookie-demo-07.vercel.app",
-        secure: !isDevelopment,
-      })
-    )
-  );
+  // await Promise.all(
+  //   cookiesToClear.map((cookieName) =>
+  //     store.delete({
+  //       name: cookieName,
+  //       path: "/",
+  //       domain:
+  //         process.env.NODE_ENV === "development"
+  //           ? "localhost"
+  //           : "cookie-demo-07.vercel.app",
+  //       secure: !isDevelopment,
+  //     })
+  //   )
+  // );
+  cookiesToClear.forEach((cookieName) => {
+    store.delete(cookieName);
+  });
 }
