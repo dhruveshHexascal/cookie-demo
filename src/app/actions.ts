@@ -44,7 +44,17 @@ export async function clearAuthCookies() {
     "m_refresh_status",
   ];
 
-  cookiesToClear.forEach(async (cookieName) => {
-    store.delete(cookieName);
-  });
+  await Promise.all(
+    cookiesToClear.map((cookieName) =>
+      store.delete({
+        name: cookieName,
+        path: "/",
+        domain:
+          process.env.NODE_ENV === "development"
+            ? "localhost"
+            : "cookie-demo-07.vercel.app",
+        secure: process.env.NODE_ENV === "production",
+      })
+    )
+  );
 }
